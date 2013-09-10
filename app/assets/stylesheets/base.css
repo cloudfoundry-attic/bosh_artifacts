@@ -1,0 +1,62 @@
+.container {
+  max-width: 600px;
+}
+
+h1, h2 {
+  padding-top: 5px;
+  border-top: 2px solid #ddd;
+  font-size: 15px;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li.build-version,
+ul.files > li {
+  margin-bottom: 3px;
+  padding-left: 0;
+  list-style: none;
+}
+
+li.build-version > strong {
+  float: left;
+  margin-left: -60px;
+  padding: 0 10px;
+  border-radius: 50px;
+  background: #00AA4F;
+  color: #fff;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+li.build-version > ul.files {
+  margin-bottom: 30px;
+}
+
+.download-link {
+  float: left;
+  margin-top: 2px;
+  margin-right: 5px;
+  padding: 0 3px;
+  border-radius: 5px;
+  background: #efefef;
+  font-size: 12px;
+}
+
+.original-name {
+  float: right;
+  color: #aaa;
+  font-size: 10px;
+  line-height: 18px;
+}
+
+.hints > strong {
+  font-size: 10px;
+  color: #aaa;
+  font-weight: normal;
+}
+

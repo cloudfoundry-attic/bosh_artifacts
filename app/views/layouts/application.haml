@@ -1,0 +1,28 @@
+!!! XML
+!!! 1.1
+
+%html(xmlns="http://www.w3.org/1999/xhtml")
+  %head
+    %title Bosh Artifacts
+
+    %meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+    %meta(http-equiv="expires" content="0")
+    %meta(http-equiv="Content-Script-Type" content="text/javascript")
+    %meta(http-equiv="Content-Style-Type" content="text/css")
+    %meta(http-equiv="X-UA-Compatible" content="IE=8")
+    = csrf_meta_tag
+
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+
+  %body
+    .container
+      %header.navbar
+        %nav
+          %ul.nav.navbar-nav
+            %li= link_to "Home",      root_path
+            %li= link_to "Gems",      file_collections_path(type: "gems")
+            %li= link_to "Releases",  file_collections_path(type: "releases")
+            %li= link_to "Stemcells", file_collections_path(type: "stemcells")
+      #content
+        = yield

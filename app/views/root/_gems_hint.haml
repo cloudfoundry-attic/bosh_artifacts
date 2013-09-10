@@ -1,0 +1,15 @@
+- source_url = linker.rubygems_source_for_gems(build_version)
+- gem_files  = build_version.file_collection
+
+.hints
+  - if bosh_cli_gem_file = gem_files.detect { |f| f.name == "bosh_cli" }
+    %strong On command line
+    %pre
+      :preserve
+        $ gem install bosh_cli -v #{bosh_cli_gem_file.version} --source #{source_url}
+
+  %strong Gemfile
+  %pre
+    :preserve
+      source "#{source_url}"
+      gem "bosh_cli"

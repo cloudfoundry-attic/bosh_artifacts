@@ -1,0 +1,5 @@
+%h1= @collection_type.humanize
+%ul
+  - @file_collection_presenter.build_version_collection(@collection_type).sorted.each do |bv|
+    = render partial: "build_version",
+      locals: {build_version: bv, linker: @file_collection_presenter.linker}

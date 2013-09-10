@@ -1,0 +1,11 @@
+%li.build-version
+  %strong= build_version.number
+  %ul.files
+    - build_version.file_collection.each do |file|
+      %li
+        = file.human_description
+        = link_to "Download",
+          linker.url_for_file(file),
+          class: "download-link"
+
+        %span.original-name= file.original_name
