@@ -1,5 +1,14 @@
+- bvc    = @file_collection_presenter.build_version_collection(@collection_type)
+- linker = @file_collection_presenter.linker(@collection_type)
+
 %h1= @collection_type.humanize
+
+%p.source
+  Source:
+  = link_to linker.source_url, linker.source_url
+
 %ul
-  - @file_collection_presenter.build_version_collection(@collection_type).sorted.each do |bv|
+  - bvc.sorted.each do |bv|
     = render partial: "build_version",
-      locals: {build_version: bv, linker: @file_collection_presenter.linker(@collection_type)}
+      locals: {build_version: bv, linker: linker}
+
