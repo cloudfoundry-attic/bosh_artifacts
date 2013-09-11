@@ -7,7 +7,7 @@ class S3::BucketLinker
     "#{@bucket.url}/#{file.original.key}"
   end
 
-  def rubygems_source_for_gems(build_version)
-    "#{@bucket.url}/#{build_version.number}/gems"
+  def rubygems_source_for_gems
+    "#{@bucket.url}"
   end
 end

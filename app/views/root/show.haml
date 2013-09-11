@@ -1,22 +1,12 @@
-%h2 Latest Gems
+- %w(gems releases stemcells).each do |type|
+  %h2= "Latest #{type.humanize}"
 
-- latest_gems_bv = @file_collection_presenter.latest_gems_build_version
-- linker = @file_collection_presenter.linker
+  - build_version = @file_collection_presenter.latest_build_version(type)
+  - linker = @file_collection_presenter.linker(type)
 
-= render partial: "gems_hint",
-  locals: {build_version: latest_gems_bv,
-           linker:        linker}
+  - if type == "gems"
+    = render partial: "gems_hint",
+      locals: {build_version: build_version, linker: linker}
 
-= render partial: "file_collections/build_version",
-  locals: {build_version: latest_gems_bv,
-           linker:        linker}
-
-%h2 Latest Release
-= render partial: "file_collections/build_version",
-  locals: {build_version: @file_collection_presenter.latest_release_build_version,
-           linker:        linker}
-
-%h2 Latest Stemcell
-= render partial: "file_collections/build_version",
-  locals: {build_version: @file_collection_presenter.latest_stemcell_build_version,
-           linker:        linker}
+  = render partial: "file_collections/build_version",
+    locals: {build_version: build_version, linker: linker}

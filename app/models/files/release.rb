@@ -4,12 +4,12 @@ class Files::Release < Struct.new(
   :original,
   :logger,
 )
-                # 977/release/bosh-977.tgz
-  S3_FILE_FMT = %r{\A(\d+)/release/(\w+)-\d+.tgz\z}
+                # release/bosh-977.tgz
+  S3_FILE_FMT = %r{\Arelease/(\w+)-(\d+)\.tgz\z}
 
   def self.from_s3_file_possibly(s3_file, logger)
     if s3_file.key =~ S3_FILE_FMT
-      new($1, $2, s3_file, logger)
+      new($2, $1, s3_file, logger)
     end
   end
 
@@ -19,5 +19,9 @@ class Files::Release < Struct.new(
 
   def original_name
     original.key
+  end
+
+  def original_short_name
+    original_name.split("/").last
   end
 end
