@@ -24,4 +24,8 @@ class FileCollection
   end
 
   delegate :each, to: :@files
+
+  def sorted
+    sort_by(&:name)
+  end
 end
