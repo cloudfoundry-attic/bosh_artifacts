@@ -9,7 +9,7 @@ class BuildVersionCollection
   delegate :each, to: :build_versions
 
   def sorted
-    sort_by(&:number).reverse
+    sort_by { |bv| bv.number.to_i }.reverse
   end
 
   def latest
