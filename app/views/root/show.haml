@@ -1,12 +1,13 @@
-- %w(gems releases stemcells).each do |type|
+- %w(releases stemcells).each do |type|
   %h2= "Latest #{type.humanize}"
 
   - build_version = @file_collection_presenter.latest_build_version(type)
   - linker = @file_collection_presenter.linker(type)
 
-  - if type == "gems"
-    = render partial: "gems_hint",
-      locals: {build_version: build_version, linker: linker}
-
   = render partial: "file_collections/build_version",
     locals: {build_version: build_version, linker: linker}
+
+- # Assumption here is that we publish gems to RubyGems everytime we publish BOSH release
+- build_version = @file_collection_presenter.latest_build_version("releases")
+= render partial: "gems_hint", 
+  locals: {build_version: build_version}
