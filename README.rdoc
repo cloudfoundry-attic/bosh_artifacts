@@ -1,1 +1,1 @@
-http://bosh_artifacts.cfapps.io/
+http://bosh_artifacts.cfapps.io
