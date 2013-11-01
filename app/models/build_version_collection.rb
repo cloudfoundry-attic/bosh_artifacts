@@ -12,8 +12,8 @@ class BuildVersionCollection
     sort_by { |bv| bv.number.to_i }.reverse
   end
 
-  def latest
-    sorted.first
+  def latest(*args)
+    sorted.first(*args)
   end
 
   private

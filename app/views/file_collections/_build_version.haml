@@ -1,5 +1,6 @@
 %li.build-version
   %strong= build_version.number
+
   %ul.files
     - build_version.file_collection.sorted.each do |file|
       %li
@@ -7,5 +8,11 @@
         = link_to "Download",
           linker.url_for_file(file),
           class: "download-link"
-
         %span.original-name= file.original_short_name
+
+  - if previous_build_version
+    %ul.links
+      %li
+        = link_to "Changes between #{build_version.number} - #{previous_build_version.number}",
+          git_pipeline_linker.changes_url(build_version, previous_build_version),
+          class: "git-pipeline-link"

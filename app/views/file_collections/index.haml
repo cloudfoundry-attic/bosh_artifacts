@@ -1,5 +1,6 @@
 - bvc    = @file_collection_presenter.build_version_collection(@collection_type)
 - linker = @file_collection_presenter.linker(@collection_type)
+- git_pipeline_linker = @file_collection_presenter.git_pipeline_linker
 
 %h1= @collection_type.humanize
 
@@ -8,7 +9,9 @@
   = link_to linker.source_url, linker.source_url
 
 %ul
-  - bvc.sorted.each do |bv|
+  - (sorted_bvc = bvc.sorted).each.with_index do |_, i|
     = render partial: "build_version",
-      locals: {build_version: bv, linker: linker}
-
+      locals: {build_version:          sorted_bvc[i], 
+               previous_build_version: sorted_bvc[i+1], 
+               linker:                 linker,
+               git_pipeline_linker:    git_pipeline_linker}

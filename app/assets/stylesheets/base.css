@@ -21,10 +21,15 @@ ul {
 }
 
 li.build-version,
-ul.files > li {
+ul.files > li,
+ul.links > li {
   margin-bottom: 3px;
   padding-left: 0;
   list-style: none;
+}
+
+li.build-version {
+  margin-bottom: 30px;
 }
 
 li.build-version > strong {
@@ -38,8 +43,14 @@ li.build-version > strong {
   font-weight: normal;
 }
 
-li.build-version > ul.files {
-  margin-bottom: 30px;
+li.build-version .files,
+li.build-version .links {
+  margin-bottom: 10px;
+}
+
+li.build-version .links a {
+  color: #999;
+  font-size: 12px;
 }
 
 .download-link {

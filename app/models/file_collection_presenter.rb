@@ -11,11 +11,15 @@ class FileCollectionPresenter
   end
 
   def latest_build_version(type)
-    build_version_collection(type).latest
+    build_version_collection(type).latest(2)
   end
 
   def linker(type)
     S3::BucketLinker.new(bucket_for_type(type))
+  end
+
+  def git_pipeline_linker
+    GitPipelineLinker.new("http://git_pipeline.cfapps.io", "bosh")
   end
 
   private
