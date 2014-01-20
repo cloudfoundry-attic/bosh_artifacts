@@ -2,9 +2,9 @@
   %strong On command line
   %pre
     :preserve
-      $ gem install bosh_cli -v 1.5.0.pre.#{build_version.number}
+      $ gem install bosh_cli -v 1.#{build_version.number}.0
 
   %strong Gemfile
   %pre
     :preserve
-      gem "bosh_cli", "1.5.0.pre.#{build_version.number}"
+      gem "bosh_cli", "~> 1.#{build_version.number}.0"
