@@ -18,8 +18,8 @@ class FileCollectionPresenter
     S3::BucketLinker.new(bucket_for_type(type))
   end
 
-  def git_pipeline_linker
-    GitPipelineLinker.new("http://git_pipeline.cfapps.io", "bosh")
+  def changes_linker
+    GithubChangesLinker.new("https://github.com/cloudfoundry/bosh")
   end
 
   private

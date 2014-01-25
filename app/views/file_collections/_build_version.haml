@@ -14,5 +14,5 @@
     %ul.links
       %li
         = link_to "Changes between #{build_version.number} - #{previous_build_version.number}",
-          git_pipeline_linker.changes_url(build_version, previous_build_version),
-          class: "git-pipeline-link"
+          changes_linker.compare_url(build_version, previous_build_version),
+          class: "changes-link"

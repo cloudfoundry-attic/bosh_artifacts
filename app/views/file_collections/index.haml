@@ -1,6 +1,6 @@
 - bvc    = @file_collection_presenter.build_version_collection(@collection_type)
 - linker = @file_collection_presenter.linker(@collection_type)
-- git_pipeline_linker = @file_collection_presenter.git_pipeline_linker
+- changes_linker = @file_collection_presenter.changes_linker
 
 %h1= @collection_type.humanize
 
@@ -14,4 +14,4 @@
       locals: {build_version:          sorted_bvc[i], 
                previous_build_version: sorted_bvc[i+1], 
                linker:                 linker,
-               git_pipeline_linker:    git_pipeline_linker}
+               changes_linker:         changes_linker}

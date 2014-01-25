@@ -3,13 +3,13 @@
 
   - current_bv, previous_bv = @file_collection_presenter.latest_build_version(type)
   - linker = @file_collection_presenter.linker(type)
-  - git_pipeline_linker = @file_collection_presenter.git_pipeline_linker
+  - changes_linker = @file_collection_presenter.changes_linker
 
   = render partial: "file_collections/build_version",
     locals: {build_version:          current_bv,
              previous_build_version: previous_bv,
              linker:                 linker,
-             git_pipeline_linker:    git_pipeline_linker}
+             changes_linker:         changes_linker}
 
 - # Assumption here is that we publish gems to RubyGems everytime we publish BOSH release
 - current_bv, _ = @file_collection_presenter.latest_build_version("releases")
