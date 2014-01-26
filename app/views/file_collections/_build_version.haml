@@ -3,6 +3,7 @@
 
   %ul.files
     - build_version.file_collection.sorted.each do |file|
+      %a{name: build_version.number}
       %li
         = file.human_description
         = link_to "Download",
@@ -10,8 +11,14 @@
           class: "download-link"
         %span.original-name= file.original_short_name
 
-  - if previous_build_version
-    %ul.links
+  %ul.links
+    - if published_at = build_version.published_at
+      %li
+        = link_to "##{build_version.number}", class: "published-at-link" do
+          Published at
+          %span.localtime= published_at.utc.iso8601
+
+    - if previous_build_version
       %li
         = link_to "Changes between #{build_version.number} - #{previous_build_version.number}",
           changes_linker.compare_url(build_version, previous_build_version),

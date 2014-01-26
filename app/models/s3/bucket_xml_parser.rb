@@ -21,7 +21,12 @@ class S3::BucketXmlParser
 
   def build_files(hash)
     hash["ListBucketResult"]["Contents"].map do |content|
-      S3::File.new(content["Key"], content["Size"], @logger)
+      S3::File.new(
+        content["Key"],
+        content["Size"],
+        Time.parse(content["LastModified"]),
+        @logger,
+      )
     end
   end
 
