@@ -25,4 +25,8 @@ class Files::Release < Struct.new(
   def original_short_name
     original_name.split("/").last
   end
+
+  def sort_key
+    name
+  end
 end

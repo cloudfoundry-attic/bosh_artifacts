@@ -26,6 +26,6 @@ class FileCollection
   delegate :each, to: :@files
 
   def sorted
-    sort_by(&:name)
+    sort_by(&:sort_key)
   end
 end
