@@ -6,3 +6,5 @@ gem "haml"
 # CF support
 gem "uglifier"
 gem "rails_12factor", group: :production
+
+gem "rspec-rails"
