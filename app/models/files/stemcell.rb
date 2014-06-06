@@ -33,7 +33,7 @@ class Files::Stemcell < Struct.new(
   def self.from_s3_file_possibly(s3_file, logger)
     if md = s3_file.key.match(S3_FILE_FMT)
       os_name    = md[:os_name]
-      os_version = md[:os_version] ? md[:os_version][1..-1] : 'lucid'
+      os_version = md[:os_version] ? md[:os_version][1..-1] : nil
       agent_type = md[:agent_type] ? md[:agent_type][1..-1] : 'ruby_agent'
 
       if os_version =~ /ruby|go|agent/
@@ -42,6 +42,10 @@ class Files::Stemcell < Struct.new(
         else
           agent_type, os_version = os_version, nil
         end
+      end
+
+      if !os_version
+        os_version = 'lucid' if os_name == 'ubuntu'
       end
 
       new(

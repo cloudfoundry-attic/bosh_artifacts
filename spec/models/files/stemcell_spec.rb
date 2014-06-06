@@ -24,7 +24,7 @@ describe Files::Stemcell do
         os_version: nil,
         agent_type: "go_agent",
       },
-      
+
       "bosh-stemcell/aws/bosh-stemcell-2446-aws-xen-ubuntu-lucid-go_agent.tgz" => {
         version_number: "2446",
         name: "bosh",
@@ -34,7 +34,7 @@ describe Files::Stemcell do
         os_version: "lucid",
         agent_type: "go_agent",
       },
-      
+
       "micro-bosh-stemcell/aws/light-micro-bosh-stemcell-891-aws-xen-ubuntu.tgz" => {
         version_number: "891",
         name: "light-micro-bosh",
@@ -54,6 +54,26 @@ describe Files::Stemcell do
         os_version: "lucid",
         agent_type: "go_agent",
       },
+
+      "bosh-stemcell/aws/light-bosh-stemcell-2579-aws-xen-centos.tgz" => {
+        version_number: "2579",
+        name: "light-bosh",
+        cloud_name: "aws",
+        infrastructure_name: "xen",
+        os_name: "centos",
+        os_version: nil,
+        agent_type: "ruby_agent",
+      },
+
+      "bosh-stemcell/aws/light-bosh-stemcell-2579-aws-xen-centos-go_agent.tgz" => {
+        version_number: "2579",
+        name: "light-bosh",
+        cloud_name: "aws",
+        infrastructure_name: "xen",
+        os_name: "centos",
+        os_version: nil,
+        agent_type: "go_agent",
+      }
     }
     
     examples.each do |path, expected|
