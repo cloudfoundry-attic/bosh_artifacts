@@ -51,10 +51,10 @@ class Files::Stemcell < Struct.new(
       new(
         md[:ver_num], 
         s3_file.last_modified, 
-        md[:name], 
-        md[:c_name], 
-        md[:i_name], 
-        os_name, 
+        md[:name],
+        md[:c_name],
+        md[:i_name],
+        os_name,
         os_version, 
         agent_type, 
         s3_file, 
@@ -69,6 +69,10 @@ class Files::Stemcell < Struct.new(
 
   def original_name
     original.key
+  end
+
+  def e_tag
+    original.e_tag
   end
 
   def original_short_name

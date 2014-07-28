@@ -63,10 +63,11 @@ li.build-version .links a {
   font-size: 12px;
 }
 
-.original-name {
+.e_tag {
+  font-family: Courier New;
   float: right;
   color: #aaa;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 18px;
 }
 
@@ -75,4 +76,3 @@ li.build-version .links a {
   color: #aaa;
   font-weight: normal;
 }
-

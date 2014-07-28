@@ -18,6 +18,10 @@ class Files::Release < Struct.new(
     "#{name}"
   end
 
+  def e_tag
+    original.e_tag
+  end
+
   def original_name
     original.key
   end

@@ -6,10 +6,10 @@
       %a{name: build_version.number}
       %li
         = file.human_description
+        %span.e_tag= file.e_tag
         = link_to "Download",
           linker.url_for_file(file),
           class: "download-link"
-        %span.original-name= file.original_short_name
 
   %ul.links
     - if published_at = build_version.published_at
