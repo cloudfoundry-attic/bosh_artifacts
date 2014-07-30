@@ -36,7 +36,7 @@ class S3::BucketPageXmlParser
       S3::File.new(
         content["Key"],
         content["Size"],
-        content["ETag"].gsub('"',''),
+        content["ETag"].gsub('"', ''),
         Time.parse(content["LastModified"]),
         @logger,
       )

@@ -1,9 +1,11 @@
 require 'spec_helper'
 
 describe S3::BucketPageXmlParser do
-  describe '#parse' do
+  subject { described_class.new(bucket_url, bucket_xml, logger) }
+  let(:bucket_url) { 'fake-bucket-url' }
+  let(:logger) { Logger.new('/dev/null') }
 
-xml = <<EOF
+  let(:bucket_xml) { <<EOF }
 <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
   <Name>bosh-jenkins-artifacts</Name>
   <Prefix/>
@@ -27,29 +29,38 @@ xml = <<EOF
 </ListBucketResult>
 EOF
 
-    let(:bucket) { double('bucket') }
-    let(:logger) { double('logger') }
-
+  describe '#parse' do
     it 'does stuff' do
-      allow(S3::BucketPage).to receive(:new)
+      file1 = double('file1')
+      file2 = double('file2')
 
       expect(S3::File).to receive(:new).with(
-                            'release/bosh-1644.tgz',
-                            '129786667',
-                            '302e3c1f30d571efc150c37b7442aaea',
-                            Time.parse('2013-12-25T07:01:23.000Z'),
-                            logger)
+        'release/bosh-1644.tgz',
+        '129786667',
+        '302e3c1f30d571efc150c37b7442aaea',
+        Time.parse('2013-12-25T07:01:23.000Z'),
+        logger,
+      ).and_return(file1)
 
       expect(S3::File).to receive(:new).with(
-                            'release/bosh-1645.tgz',
-                            '129788667',
-                            'a03e3c1f30d571efc150c37b7442aaea',
-                            Time.parse('2014-12-25T07:01:23.000Z'),
-                            logger)
+        'release/bosh-1645.tgz',
+        '129788667',
+        'a03e3c1f30d571efc150c37b7442aaea',
+        Time.parse('2014-12-25T07:01:23.000Z'),
+        logger,
+      ).and_return(file2)
 
-      parser = described_class.new(bucket, xml, logger)
-      parser.parse
+      bucket_page = double('bucket-page')
 
+      allow(S3::BucketPage).to receive(:new).with(
+        bucket_url,
+        [file1, file2],
+        1000,
+        false,
+        logger,
+      ).and_return(bucket_page)
+
+      expect(subject.parse).to eq(bucket_page)
     end
   end
 end

@@ -5,11 +5,13 @@
     - build_version.file_collection.sorted.each do |file|
       %a{name: build_version.number}
       %li
-        = file.human_description
-        %span.e_tag= file.e_tag
         = link_to "Download",
           linker.url_for_file(file),
           class: "download-link"
+
+        = file.human_description
+
+        %span.e-tag= "#{file.e_tag} (md5)"
 
   %ul.links
     - if published_at = build_version.published_at

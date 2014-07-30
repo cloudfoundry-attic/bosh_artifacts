@@ -78,7 +78,7 @@ describe Files::Stemcell do
 
     examples.each do |path, expected|
       it "correctly interprets '#{path}'" do
-        s3_file = S3::File.new(path, nil, 'abcdefg', Time.now, logger)
+        s3_file = S3::File.new(path, 100, 'fake-etag', Time.now, logger)
 
         expected = Files::Stemcell.new(
           expected[:version_number],
@@ -101,11 +101,22 @@ describe Files::Stemcell do
   end
 
   describe '#e_tag' do
-    let(:s3_file) { S3::File.new('bosh-stemcell/aws/bosh-stemcell-891-aws-xen-ubuntu.tgz', nil, 'ima_etag', Time.now, double('logger')) }
-    let(:stemcell) { described_class.from_s3_file_possibly(s3_file, double('logger')) }
+    logger = Logger.new("/dev/null")
+
+    let(:s3_file) do
+      S3::File.new(
+        'bosh-stemcell/aws/bosh-stemcell-891-aws-xen-ubuntu.tgz',
+        100,
+        'fake-etag',
+        Time.now,
+        logger,
+      )
+    end
+
+    let(:stemcell) { described_class.from_s3_file_possibly(s3_file, logger) }
 
     it 'exposes the e_tag of its S3 file' do
-      expect(stemcell.e_tag).to eq('ima_etag')
+      expect(stemcell.e_tag).to eq('fake-etag')
     end
   end
 end
