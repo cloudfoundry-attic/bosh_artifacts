@@ -32,7 +32,21 @@ class S3::BucketPageXmlParser
   def parse
     hash = Hash.from_xml(@xml)
 
-    files = hash["ListBucketResult"]["Contents"].map do |content|
+    contents = hash["ListBucketResult"]["Contents"]
+
+    # In cases when there is only one item returned,
+    # Contents key is parsed as a Hash; make it into an array
+    unless contents.is_a?(Array)
+      if contents.is_a?(Hash)
+        contents = [contents]
+      else
+        raise StandardError,
+          "Expected 'ListBucketResult/Contents' " +
+          "key to be an Array, was '#{contents.class}'"
+      end
+    end
+
+    files = contents.map do |content|
       S3::File.new(
         content["Key"],
         content["Size"],

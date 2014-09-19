@@ -25,7 +25,7 @@ class S3::BucketFetcher
     S3::Bucket.new(@bucket_url, bucket_pages.map(&:files).flatten, @logger)
 
   rescue Exception => e
-    @logger.error("s3_bucket_fetcher.#{__method__}.error e=#{e.inspect}")
+    @logger.error("s3_bucket_fetcher.#{__method__}.error e=#{e.inspect} backtrace=#{e.backtrace.join("\n")}")
     raise FetchError, e.inspect
   end
 end
