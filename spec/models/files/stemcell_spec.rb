@@ -73,6 +73,16 @@ describe Files::Stemcell do
         os_name: "centos",
         os_version: nil,
         agent_type: "go_agent",
+      },
+      
+      "bosh-stemcell/aws/light-bosh-stemcell-2579.1-aws-xen-centos-go_agent.tgz" => {
+        version_number: "2579.1",
+        name: "light-bosh",
+        cloud_name: "aws",
+        infrastructure_name: "xen",
+        os_name: "centos",
+        os_version: nil,
+        agent_type: "go_agent",
       }
     }
 

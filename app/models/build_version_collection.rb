@@ -1,3 +1,5 @@
+require "semi_semantic/version"
+
 class BuildVersionCollection
   include Enumerable
 
@@ -9,7 +11,7 @@ class BuildVersionCollection
   delegate :each, to: :build_versions
 
   def sorted
-    sort_by { |bv| bv.number.to_i }.reverse
+    sort_by { |bv| SemiSemantic::Version.parse(bv.number) }.reverse
   end
 
   def latest(*args)

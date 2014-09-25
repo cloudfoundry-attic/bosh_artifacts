@@ -8,3 +8,5 @@ gem "uglifier"
 gem "rails_12factor", group: :production
 
 gem "rspec-rails"
+
+gem "semi_semantic"

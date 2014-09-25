@@ -20,7 +20,7 @@ class Files::Stemcell < Struct.new(
         \w+/
           (?<name>[\w-]+)
           -stemcell
-          -(?<ver_num>\d+)
+          -(?<ver_num>[\.\d]+)
           -(?<c_name>\w+)
           -(?<i_name>\w+)
           -(?<os_name>\w+)
