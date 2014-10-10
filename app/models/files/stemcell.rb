@@ -22,9 +22,9 @@ class Files::Stemcell < Struct.new(
           -stemcell
           -(?<ver_num>[\.\d]+)
           -(?<c_name>\w+)
-          -(?<i_name>\w+)
-          -(?<os_name>\w+)
-          (?<os_version>-\w+)?
+          -(?<i_name>\w+(-\w+)?)
+          -(?<os_name>centos|ubuntu)
+          (?<os_version>-trusty|-lucid)?
           (?<agent_type>-go_agent)?
           \.tgz
     \z

@@ -83,6 +83,26 @@ describe Files::Stemcell do
         os_name: "centos",
         os_version: nil,
         agent_type: "go_agent",
+      },
+
+      "bosh-stemcell/aws/light-bosh-stemcell-2579.1-aws-xen-hvm-centos-go_agent.tgz" => {
+        version_number: "2579.1",
+        name: "light-bosh",
+        cloud_name: "aws",
+        infrastructure_name: "xen-hvm",
+        os_name: "centos",
+        os_version: nil,
+        agent_type: "go_agent",
+      },
+
+      "bosh-stemcell/aws/light-bosh-stemcell-2579.1-aws-xen-hvm-ubuntu-trusty-go_agent.tgz" => {
+        version_number: "2579.1",
+        name: "light-bosh",
+        cloud_name: "aws",
+        infrastructure_name: "xen-hvm",
+        os_name: "ubuntu",
+        os_version: "trusty",
+        agent_type: "go_agent",
       }
     }
 
